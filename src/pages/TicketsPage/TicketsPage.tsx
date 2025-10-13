@@ -1,10 +1,8 @@
-import { MetaTags } from '../../components/MetaTags/MetaTags.tsx';
-import { getMetaConfig } from './meta.ts';
 import type { FC } from 'react';
 
 const TicketsPage: FC = () => (
   <div>
-    <MetaTags config={getMetaConfig()} />
+    <title>Мои билеты - Онлайн-бронирование кинотеатра</title>
     <h1>Мои билеты</h1>
   </div>
 );

@@ -2,9 +2,7 @@ import { lazy, Suspense, type FC } from 'react';
 import { Flex, Layout, Spin } from 'antd';
 import { Routes, Route } from 'react-router-dom';
 import { ROUTES } from './routes';
-import { MetaTags } from './components/MetaTags/MetaTags.tsx';
 import { Sidebar } from './components/Sidebar/Sidebar.tsx';
-import { APP_CONFIG } from './config.ts';
 
 const MoviesPage = lazy(() => import('./pages/MoviesPage/MoviesPage.tsx'));
 const CinemasPage = lazy(() => import('./pages/CinemasPage/CinemasPage.tsx'));
@@ -18,17 +16,9 @@ const NotFoundPage = lazy(
 
 const { Content } = Layout;
 
-const metaConfig = {
-  title: 'Онлайн-бронирование кинотеатра',
-  description:
-    'Бронируйте места в кинотеатрах онлайн и покупайте билеты быстро и удобно!',
-  ogUrl: `${APP_CONFIG.baseUrl}`,
-};
-
 const App: FC = () => {
   return (
     <Layout style={{ minHeight: '100vh' }}>
-      <MetaTags config={metaConfig} />
       <Sidebar />
       <Layout>
         <Content style={{ padding: '24px' }}>

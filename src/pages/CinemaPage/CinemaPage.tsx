@@ -1,7 +1,5 @@
 import { useParams } from 'react-router-dom';
 import { Typography } from 'antd';
-import { MetaTags } from '../../components/MetaTags/MetaTags.tsx';
-import { getMetaConfig } from './meta.ts';
 import type { FC } from 'react';
 
 const { Title } = Typography;
@@ -12,7 +10,7 @@ const CinemaPage: FC = () => {
 
   return (
     <div>
-      <MetaTags config={getMetaConfig(`${id}`, name)} />
+      <title>Кинотеатр {name} - Онлайн-бронирование кинотеатра</title>
       <Title level={2}>Кинотеатр {name}</Title>
       <p>Это страница с информацией о кинотеатре c id {id}.</p>
     </div>
