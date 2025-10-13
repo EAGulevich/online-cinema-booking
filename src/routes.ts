@@ -8,7 +8,7 @@ export const ROUTES = {
   CINEMAS: { path: '/cinemas', to: '/cinemas' },
   CINEMA: {
     path: '/cinemas/:id',
-    to: (id: string) => `'/cinemas'/${id}` as const,
+    to: (id: string) => `/cinemas/${id}` as const,
   },
   TICKETS: { path: '/tickets', to: '/tickets' },
   LOGIN: { path: '/login', to: '/login' },
