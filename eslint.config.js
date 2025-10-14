@@ -74,7 +74,7 @@ export default defineConfig([
             },
             // Ваши внутренние алиасы
             {
-              pattern: '@assets/**',
+              pattern: '@generatedApi/**',
               group: 'internal',
             },
             {

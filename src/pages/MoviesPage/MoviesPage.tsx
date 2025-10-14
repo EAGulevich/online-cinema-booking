@@ -3,11 +3,9 @@ import { useNavigate } from 'react-router-dom';
 import { Button, Table, type TableColumnsType } from 'antd';
 
 import { APP_CONFIG } from '@config';
-import { ROUTES } from '@routes';
-
-import { useGetMovies } from '../../generated/фильмы/фильмы.ts';
-
 import type { Movie } from '@generatedApi/models';
+import { useGetMovies } from '@generatedApi/movies/movies.ts';
+import { ROUTES } from '@routes';
 
 interface DataType {
   key: React.Key;

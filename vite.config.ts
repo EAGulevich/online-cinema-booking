@@ -14,7 +14,7 @@ export default defineConfig({
   resolve: {
     alias: {
       '@components': path.resolve(__dirname, 'src/components'),
-      '@queryOptions': path.resolve(__dirname, 'src/queryOptions'),
+      '@generatedApi': path.resolve(__dirname, 'src/generated'),
       '@config': path.resolve(__dirname, 'src/config.ts'),
       '@routes': path.resolve(__dirname, 'src/routes.ts'),
     },

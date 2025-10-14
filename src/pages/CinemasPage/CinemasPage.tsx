@@ -2,11 +2,9 @@ import { type FC } from 'react';
 import { useNavigate } from 'react-router-dom';
 import { Button, Table, type TableColumnsType } from 'antd';
 
-import { ROUTES } from '@routes';
-
-import { useGetCinemas } from '../../generated/кинотеатры/кинотеатры.ts';
-
+import { useGetCinemas } from '@generatedApi/cinemas/cinemas.ts';
 import type { Cinema } from '@generatedApi/models';
+import { ROUTES } from '@routes';
 
 interface DataType {
   key: React.Key;
