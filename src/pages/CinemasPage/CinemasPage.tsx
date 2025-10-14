@@ -1,22 +1,15 @@
-import { type FC, useEffect } from 'react';
+import { type FC } from 'react';
 import { Link } from 'react-router-dom';
+import { useQuery } from '@tanstack/react-query';
 
-import { APP_CONFIG } from '@config';
 import { ROUTES } from '@routes';
 
-const CinemasPage: FC = () => {
-  useEffect(() => {
-    // TODO: для теста удалить
-    const getCinemas = async () => {
-      fetch(`${APP_CONFIG.apiUrl}/cinemas`)
-        .then((data) => data.json())
-        .then((data) => {
-          console.log({ data });
-        });
-    };
+import { createCinemasQueryOptions } from '../../queryOptions/createCinemasQueryOptions.ts';
 
-    getCinemas();
-  }, []);
+const CinemasPage: FC = () => {
+  const { data, isLoading } = useQuery(createCinemasQueryOptions());
+
+  console.log({ data, isLoading });
 
   return (
     <div>

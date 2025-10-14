@@ -27,6 +27,7 @@
 
     "paths": {
       "@components/*": ["components/*"],
+      "@queryOptions/*": ["queryOptions/*"],
       "@config": ["config"],
       "@routes": ["routes"]
     }

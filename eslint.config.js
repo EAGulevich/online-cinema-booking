@@ -29,8 +29,8 @@ export default defineConfig([
           alwaysTryTypes: true,
         },
         map: [
-          ['@assets', './src/assets'],
           ['@components', './src/components'],
+          ['@queryOptions', './src/queryOptions'],
           ['@config', './src/config'],
           ['@routes', './src/routes'],
         ],
