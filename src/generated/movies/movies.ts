@@ -21,8 +21,8 @@ import type {
 
 import type {
   ErrorResponse,
-  Movie,
-  MovieSession
+  GetMoviesMovieIdSessions200,
+  Movie
 } from '.././models';
 
 import getMoviesMutator from '../../api/custom-instance';
@@ -124,8 +124,8 @@ export function useGetMovies<TData = Awaited<ReturnType<typeof getMovies>>, TErr
 
 
 /**
- * Возвращает список всех доступных киносеансов для указанного фильма.
- * @summary Получить список киносеансов для фильма
+ * Возвращает данные фильма и список всех доступных киносеансов для указанного фильма.
+ * @summary Получить список киносеансов для фильма с данными фильма
  */
 export const getMoviesMovieIdSessions = (
     movieId: number,
@@ -133,7 +133,7 @@ export const getMoviesMovieIdSessions = (
 ) => {
       
       
-      return getMoviesMovieIdSessionsMutator<MovieSession[]>(
+      return getMoviesMovieIdSessionsMutator<GetMoviesMovieIdSessions200>(
       {url: `/movies/${movieId}/sessions`, method: 'GET', signal
     },
       );
@@ -196,7 +196,7 @@ export function useGetMoviesMovieIdSessions<TData = Awaited<ReturnType<typeof ge
  , queryClient?: QueryClient
   ):  UseQueryResult<TData, TError> & { queryKey: DataTag<QueryKey, TData, TError> }
 /**
- * @summary Получить список киносеансов для фильма
+ * @summary Получить список киносеансов для фильма с данными фильма
  */
 
 export function useGetMoviesMovieIdSessions<TData = Awaited<ReturnType<typeof getMoviesMovieIdSessions>>, TError = ErrorResponse>(

@@ -31,11 +31,13 @@ export default defineConfig([
         map: [
           ['@components', './src/components'],
           ['@generatedApi', './src/generated'],
+          ['@utils', './src/utils'],
           ['@config', './src/config'],
           ['@routes', './src/routes'],
         ],
       },
     },
+    ignores: ['src/generated/**'],
     rules: {
       'import/order': [
         'error',
@@ -87,6 +89,10 @@ export default defineConfig([
             },
             {
               pattern: '@routes/**',
+              group: 'internal',
+            },
+            {
+              pattern: '@utils/**',
               group: 'internal',
             },
           ],

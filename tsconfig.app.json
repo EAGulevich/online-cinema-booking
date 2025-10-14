@@ -27,6 +27,7 @@
 
     "paths": {
       "@components/*": ["components/*"],
+      "@utils/*": ["utils/*"],
       "@generatedApi/*": ["generated/*"],
       "@config": ["config"],
       "@routes": ["routes"]

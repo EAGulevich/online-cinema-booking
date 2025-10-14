@@ -3,6 +3,7 @@ import { Routes, Route } from 'react-router-dom';
 import { QueryClient, QueryClientProvider } from '@tanstack/react-query';
 import { Flex, Layout, Spin } from 'antd';
 import { ConfigProvider } from 'antd';
+import ruRU from 'antd/lib/locale/ru_RU';
 
 import { Sidebar } from '@components/Sidebar';
 import { ROUTES } from '@routes';
@@ -27,8 +28,15 @@ const queryClient = new QueryClient();
 const App: FC = () => {
   return (
     <QueryClientProvider client={queryClient}>
-      <ConfigProvider theme={theme}>
-        <Layout style={{ minHeight: '100vh' }}>
+      <ConfigProvider theme={theme} locale={ruRU}>
+        <Layout
+          style={{
+            height: '100vh',
+            maxHeight: '100vh',
+            minWidth: '1024px',
+            overflow: 'auto',
+          }}
+        >
           <Sidebar />
           <Layout>
             <Content
