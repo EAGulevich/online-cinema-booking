@@ -11,6 +11,7 @@ export const Sidebar: FC = () => {
   return (
     <Sider theme={'dark'} collapsible>
       <Menu
+        style={{ marginTop: '20px' }}
         theme="dark"
         mode="vertical"
         selectedKeys={[activeMenuItem]}

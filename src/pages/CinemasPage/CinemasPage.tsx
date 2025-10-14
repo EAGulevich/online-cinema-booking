@@ -1,27 +1,66 @@
 import { type FC } from 'react';
-import { Link } from 'react-router-dom';
-import { useQuery } from '@tanstack/react-query';
+import { useNavigate } from 'react-router-dom';
+import { Button, Table, type TableColumnsType } from 'antd';
 
-import { createCinemasQueryOptions } from '@queryOptions/createCinemasQueryOptions.ts';
 import { ROUTES } from '@routes';
 
 import { useGetCinemas } from '../../generated/кинотеатры/кинотеатры.ts';
 
+import type { Cinema } from '@generatedApi/models';
+
+interface DataType {
+  key: React.Key;
+  id: Cinema['id'];
+  name: Cinema['name'];
+  address: Cinema['address'];
+}
+
 const CinemasPage: FC = () => {
-  const { data, isLoading } = useQuery(createCinemasQueryOptions());
-  const { data: cinemas, isLoading: isLoadingCinemas } = useGetCinemas();
+  const { data } = useGetCinemas();
+  const navigation = useNavigate();
 
-  console.log({ data, isLoading });
-  console.log({ cinemas, isLoadingCinemas });
-
+  const columns: TableColumnsType<DataType> = [
+    {
+      title: 'Кинотеатр',
+      dataIndex: 'name',
+      key: 'name',
+    },
+    {
+      title: 'Андрес',
+      dataIndex: 'address',
+      key: 'address',
+    },
+    {
+      title: ' ',
+      dataIndex: '',
+      key: 'x',
+      render: (item: DataType) => {
+        return (
+          <Button
+            onClick={() =>
+              navigation(ROUTES.CINEMA.to(item.id?.toString() || ''))
+            }
+          >
+            Посмотреть сеансы
+          </Button>
+        );
+      },
+    },
+  ];
   return (
     <div>
       <title>Кинотеатры - Онлайн-бронирование кинотеатра</title>
-      <h1>Кинотеатры</h1>
-      <Link to={ROUTES.CINEMA.to('45')}>Test link cinema</Link>
-      {cinemas?.data?.map((item) => (
-        <div>{item.name}</div>
-      ))}
+
+      <Table<DataType>
+        dataSource={data?.data.map<DataType>((item) => ({
+          key: item.id?.toString() || '',
+          id: item.id || 0,
+          name: item.name || '',
+          address: item.address || '',
+        }))}
+        columns={columns}
+        pagination={false}
+      />
     </div>
   );
 };

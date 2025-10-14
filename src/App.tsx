@@ -39,6 +39,7 @@ const App: FC = () => {
                 backgroundPosition: 'center bottom',
                 backgroundRepeat: 'no-repeat',
                 height: '100vh',
+                overflow: 'auto',
               }}
             >
               <Suspense
