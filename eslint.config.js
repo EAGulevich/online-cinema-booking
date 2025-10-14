@@ -19,5 +19,14 @@ export default defineConfig([
       ecmaVersion: 2020,
       globals: globals.browser,
     },
+    settings: {
+      'import/resolver': {
+        map: [
+          ['@components', './src/components'],
+          ['@config', './src/config'],
+          ['@routes', './src/routes'],
+        ],
+      },
+    },
   },
 ]);

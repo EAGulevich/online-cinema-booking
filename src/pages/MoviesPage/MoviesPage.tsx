@@ -1,4 +1,4 @@
-import { ROUTES } from '../../routes.ts';
+import { ROUTES } from '@routes';
 import { Link } from 'react-router-dom';
 import type { FC } from 'react';
 
