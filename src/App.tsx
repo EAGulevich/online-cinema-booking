@@ -8,6 +8,7 @@ import { Sidebar } from '@components/Sidebar';
 import { ROUTES } from '@routes';
 
 import bgImage from './assets/bg.jpg';
+import { theme } from './theme.ts';
 
 const MoviesPage = lazy(() => import('./pages/MoviesPage/MoviesPage.tsx'));
 const CinemasPage = lazy(() => import('./pages/CinemasPage/CinemasPage.tsx'));
@@ -26,7 +27,7 @@ const queryClient = new QueryClient();
 const App: FC = () => {
   return (
     <QueryClientProvider client={queryClient}>
-      <ConfigProvider>
+      <ConfigProvider theme={theme}>
         <Layout style={{ minHeight: '100vh' }}>
           <Sidebar />
           <Layout>
