@@ -27,7 +27,7 @@
 
     "paths": {
       "@components/*": ["components/*"],
-      "@queryOptions/*": ["queryOptions/*"],
+      "@generatedApi/*": ["generated/*"],
       "@config": ["config"],
       "@routes": ["routes"]
     }

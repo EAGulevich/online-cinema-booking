@@ -30,7 +30,7 @@ export default defineConfig([
         },
         map: [
           ['@components', './src/components'],
-          ['@queryOptions', './src/queryOptions'],
+          ['@generatedApi', './src/generated'],
           ['@config', './src/config'],
           ['@routes', './src/routes'],
         ],
