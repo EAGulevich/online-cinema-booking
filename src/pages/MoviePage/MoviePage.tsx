@@ -1,6 +1,6 @@
+import type { FC } from 'react';
 import { useParams } from 'react-router-dom';
 import { Typography } from 'antd';
-import type { FC } from 'react';
 
 const { Title } = Typography;
 

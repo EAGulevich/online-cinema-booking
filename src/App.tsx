@@ -1,8 +1,10 @@
 import { lazy, Suspense, type FC } from 'react';
-import { Flex, Layout, Spin } from 'antd';
 import { Routes, Route } from 'react-router-dom';
-import { ROUTES } from '@routes';
+import { Flex, Layout, Spin } from 'antd';
+
 import { Sidebar } from '@components/Sidebar';
+import { ROUTES } from '@routes';
+
 
 const MoviesPage = lazy(() => import('./pages/MoviesPage/MoviesPage.tsx'));
 const CinemasPage = lazy(() => import('./pages/CinemasPage/CinemasPage.tsx'));

@@ -1,5 +1,5 @@
-import { Layout, Menu } from 'antd';
 import type { FC } from 'react';
+import { Layout, Menu } from 'antd';
 
 import { useSidebar } from './useSidebar.tsx';
 

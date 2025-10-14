@@ -1,5 +1,5 @@
+import { useCallback, useMemo } from 'react';
 import { useLocation, useNavigate } from 'react-router-dom';
-import { ROUTES } from '@routes';
 import {
   CarryOutOutlined,
   EnvironmentOutlined,
@@ -8,7 +8,8 @@ import {
   VideoCameraOutlined,
 } from '@ant-design/icons';
 import { type MenuProps } from 'antd';
-import { useCallback, useMemo } from 'react';
+
+import { ROUTES } from '@routes';
 
 export const useSidebar = () => {
   const isAuthenticated = false; // TODO
