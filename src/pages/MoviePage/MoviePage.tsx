@@ -15,6 +15,7 @@ import {
 import { LoadingBlock } from '@components/LoadingBlock';
 import NotFoundMessage from '@components/NotFoundMessage/NotFoundMessage.tsx';
 import { ROUTES } from '@routes';
+import { formatMinutesToHHmm } from '@utils/formatMinutesToHHmm.ts';
 import { getAbsoluteUrl } from '@utils/getAbsoluteUrl.ts';
 
 import { Schedule } from './parts/Schedule/Schedule.tsx';
@@ -54,7 +55,9 @@ const MoviePage: FC = () => {
     },
     {
       label: 'Продолжительность',
-      children: movieInfo?.lengthMinutes,
+      children: movieInfo?.lengthMinutes
+        ? formatMinutesToHHmm(movieInfo.lengthMinutes)
+        : '-',
     },
     {
       label: 'Рейнтинг',

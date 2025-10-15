@@ -6,13 +6,8 @@ import type { GroupedSession } from '../types.ts';
 
 export const groupSessionsByDateAndCinema = (
   sessions: MovieSession[],
-  cinemas: Cinema[]
+  cinemasMap: Record<string, Cinema>
 ) => {
-  const cinemaMap = cinemas.reduce<Record<string, Cinema>>((acc, item) => {
-    acc[item.id || ''] = item;
-    return acc;
-  }, {});
-
   const groupedByDate = sessions.reduce<Record<string, GroupedSession>>(
     (acc, session) => {
       const date = dayjs(session.startTime).format('DD.MM');
@@ -23,7 +18,7 @@ export const groupSessionsByDateAndCinema = (
       }
 
       const { cinemaId = '' } = session;
-      const cinemaName = cinemaMap[cinemaId]?.name || '-';
+      const cinemaName = cinemasMap[cinemaId]?.name || '-';
 
       if (!acc[date].cinemas[cinemaName]) {
         acc[date].cinemas[cinemaName] = [];

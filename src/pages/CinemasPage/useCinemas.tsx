@@ -1,7 +1,7 @@
 import { useMemo } from 'react';
 import { useNavigate } from 'react-router-dom';
 
-import { useGetCinemas } from '@generatedApi/cinemas/cinemas.ts';
+import { useGetAllCinemas } from '@hooks/useGetAllCinemas.ts';
 import { ROUTES } from '@routes';
 
 import { getTableColumns } from './getTableColumns.tsx';
@@ -11,11 +11,11 @@ import type { CinemasTableDataType } from './types.ts';
 export const useCinemas = () => {
   const navigation = useNavigate();
 
-  const { data, ...queryDetails } = useGetCinemas();
+  const { cinemas, cinemasQueryDetails } = useGetAllCinemas();
 
   const cinemasData = useMemo(
     () =>
-      data?.data.map(
+      cinemas.map(
         (cinema, idx): CinemasTableDataType => ({
           key: cinema.id?.toString() || idx.toString(),
           id: cinema.id || 0,
@@ -23,7 +23,7 @@ export const useCinemas = () => {
           address: cinema.address || '-',
         })
       ) || [],
-    [data]
+    [cinemas]
   );
 
   const cinemasColumns = useMemo(
@@ -38,6 +38,6 @@ export const useCinemas = () => {
   return {
     cinemasData,
     cinemasColumns,
-    queryDetails,
+    queryDetails: cinemasQueryDetails,
   };
 };

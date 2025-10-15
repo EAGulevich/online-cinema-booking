@@ -9,7 +9,7 @@ export const Sidebar: FC = () => {
   const { activeMenuItem, menuItems, onChangeItem } = useSidebar();
 
   return (
-    <Sider theme={'dark'} collapsible>
+    <Sider theme={'dark'}>
       <Menu
         style={{ marginTop: '20px' }}
         theme="dark"

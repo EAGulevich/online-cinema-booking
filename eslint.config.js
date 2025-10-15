@@ -32,6 +32,7 @@ export default defineConfig([
           ['@components', './src/components'],
           ['@generatedApi', './src/generated'],
           ['@utils', './src/utils'],
+          ['@hooks', './src/hooks'],
           ['@config', './src/config'],
           ['@routes', './src/routes'],
         ],

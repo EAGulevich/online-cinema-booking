@@ -15,6 +15,7 @@ export default defineConfig({
     alias: {
       '@components': path.resolve(__dirname, 'src/components'),
       '@utils': path.resolve(__dirname, 'src/utils'),
+      '@hooks': path.resolve(__dirname, 'src/hooks'),
       '@generatedApi': path.resolve(__dirname, 'src/generated'),
       '@config': path.resolve(__dirname, 'src/config.ts'),
       '@routes': path.resolve(__dirname, 'src/routes.ts'),

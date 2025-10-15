@@ -1,7 +1,7 @@
 import { useMemo } from 'react';
 import { useNavigate } from 'react-router-dom';
 
-import { useGetMovies } from '@generatedApi/movies/movies.ts';
+import { useGetAllMovies } from '@hooks/useGetAllMovies.ts';
 import { ROUTES } from '@routes';
 import { getAbsoluteUrl } from '@utils/getAbsoluteUrl.ts';
 
@@ -12,11 +12,11 @@ import type { MoviesTableDataType } from './types.ts';
 export const useMovies = () => {
   const navigation = useNavigate();
 
-  const { data, ...queryDetails } = useGetMovies();
+  const { movies, ...queryDetails } = useGetAllMovies();
 
   const moviesData = useMemo(
     () =>
-      data?.data.map(
+      movies.map(
         (movie, idx): MoviesTableDataType => ({
           key: movie.id?.toString() || idx.toString(),
           id: movie.id || 0,
@@ -29,8 +29,8 @@ export const useMovies = () => {
             ? getAbsoluteUrl(movie.posterImage)
             : '',
         })
-      ) || [],
-    [data]
+      ),
+    [movies]
   );
 
   const moviesColumns = useMemo(
