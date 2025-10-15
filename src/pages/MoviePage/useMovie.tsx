@@ -1,7 +1,6 @@
 import { useGetMoviesMovieIdSessions } from '@generatedApi/movies/movies.ts';
 import { useGetAllCinemas } from '@hooks/useGetAllCinemas.ts';
-
-import { groupSessionsByDateAndCinema } from './helpers/groupSessionsByDateAndCinema.helper.ts';
+import { groupSessions } from '@utils/groupSessions.ts';
 
 type UseMovieParams = {
   id?: string;
@@ -19,7 +18,7 @@ export const useMovie = ({ id }: UseMovieParams) => {
   const sessionsInfo =
     cinemasQueryDetails.isLoading || queryDetails.isLoading
       ? []
-      : groupSessionsByDateAndCinema(data?.data.sessions || [], cinemasMap);
+      : groupSessions(data?.data.sessions || [], cinemasMap, 'cinema');
 
   return {
     queryDetails,

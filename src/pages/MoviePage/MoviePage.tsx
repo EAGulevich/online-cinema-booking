@@ -14,11 +14,12 @@ import {
 
 import { LoadingBlock } from '@components/LoadingBlock';
 import NotFoundMessage from '@components/NotFoundMessage/NotFoundMessage.tsx';
+import { Schedule } from '@components/Schedule';
 import { ROUTES } from '@routes';
 import { formatMinutesToHHmm } from '@utils/formatMinutesToHHmm.ts';
 import { getAbsoluteUrl } from '@utils/getAbsoluteUrl.ts';
+import type { ScheduleMovieRenderDataType } from '@utils/groupSessions.ts';
 
-import { Schedule } from './parts/Schedule/Schedule.tsx';
 import { useMovie } from './useMovie.tsx';
 
 const { Title } = Typography;
@@ -100,7 +101,10 @@ const MoviePage: FC = () => {
           </Flex>
         </Col>
       </Row>
-      <Schedule
+      <Schedule<ScheduleMovieRenderDataType>
+        renderRowLabel={(renderData) => (
+          <Typography.Title level={3}>{renderData.cinemaName}</Typography.Title>
+        )}
         data={sessionsInfo}
         onSelectSession={({ movieId, cinemaId }) =>
           navigate(
