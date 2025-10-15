@@ -8,6 +8,10 @@ export const theme: ThemeConfig = {
   },
   components: {
     // Настройки для Sider
+    Divider: {
+      lineWidth: 3,
+    },
+    // Настройки для Sider
     Layout: {
       bodyBg: '#fff9e6', // Фон основного контента
       colorBgContainer: '#fff3cd', // Фон контейнеров

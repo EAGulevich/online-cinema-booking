@@ -23,7 +23,15 @@ const NotFoundPage = lazy(
 
 const { Content } = Layout;
 
-const queryClient = new QueryClient();
+const queryClient = new QueryClient({
+  defaultOptions: {
+    queries: {
+      staleTime: 1000 * 60, // 1 минута
+      gcTime: 1000 * 60 * 5, // 5 минут
+      retry: 2,
+    },
+  },
+});
 
 const App: FC = () => {
   return (

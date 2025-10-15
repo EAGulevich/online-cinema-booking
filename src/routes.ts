@@ -12,4 +12,14 @@ export const ROUTES = {
   },
   TICKETS: { path: '/tickets', to: '/tickets' },
   LOGIN: { path: '/login', to: '/login' },
+  BOOKING: {
+    path: '/booking',
+    to: ({ cinemaId, movieId }: { movieId: string; cinemaId: string }) => {
+      const params = new URLSearchParams({
+        movieId,
+        cinemaId,
+      });
+      return `/booking?${params.toString()}` as const;
+    },
+  },
 } as const;
