@@ -12,7 +12,7 @@ import type { MoviesTableDataType } from './types.ts';
 export const useMovies = () => {
   const navigation = useNavigate();
 
-  const { movies, ...queryDetails } = useGetAllMovies();
+  const { movies, moviesQueryDetails } = useGetAllMovies();
 
   const moviesData = useMemo(
     () =>
@@ -45,6 +45,6 @@ export const useMovies = () => {
   return {
     moviesData,
     moviesColumns,
-    queryDetails,
+    queryDetails: moviesQueryDetails,
   };
 };

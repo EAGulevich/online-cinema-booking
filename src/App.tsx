@@ -16,6 +16,7 @@ const CinemasPage = lazy(() => import('./pages/CinemasPage/CinemasPage.tsx'));
 const TicketsPage = lazy(() => import('./pages/TicketsPage/TicketsPage.tsx'));
 const LoginPage = lazy(() => import('./pages/LoginPage/LoginPage.tsx'));
 const MoviePage = lazy(() => import('./pages/MoviePage/MoviePage.tsx'));
+const BookingPage = lazy(() => import('./pages/BookingPage/BookingPage.tsx'));
 const CinemaPage = lazy(() => import('./pages/CinemaPage/CinemaPage.tsx'));
 const NotFoundPage = lazy(
   () => import('./pages/NotFoundPage/NotFoundPage.tsx')
@@ -73,6 +74,7 @@ const App: FC = () => {
                   <Route path={ROUTES.CINEMA.path} element={<CinemaPage />} />
                   <Route path={ROUTES.TICKETS.path} element={<TicketsPage />} />
                   <Route path={ROUTES.LOGIN.path} element={<LoginPage />} />
+                  <Route path={ROUTES.BOOKING.path} element={<BookingPage />} />
                   <Route path="*" element={<NotFoundPage />} />
                 </Routes>
               </Suspense>
