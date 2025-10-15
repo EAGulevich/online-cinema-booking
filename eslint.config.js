@@ -31,6 +31,7 @@ export default defineConfig([
         map: [
           ['@components', './src/components'],
           ['@generatedApi', './src/generated'],
+          ['@providers', './src/providers'],
           ['@utils', './src/utils'],
           ['@hooks', './src/hooks'],
           ['@config', './src/config'],
@@ -94,6 +95,14 @@ export default defineConfig([
             },
             {
               pattern: '@utils/**',
+              group: 'internal',
+            },
+            {
+              pattern: '@providers/**',
+              group: 'internal',
+            },
+            {
+              pattern: '@hooks/**',
               group: 'internal',
             },
           ],

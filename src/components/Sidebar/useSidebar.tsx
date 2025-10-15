@@ -7,40 +7,38 @@ import LogoutOutlined from '@ant-design/icons/LogoutOutlined';
 import VideoCameraOutlined from '@ant-design/icons/VideoCameraOutlined';
 import { type MenuProps } from 'antd';
 
+import { useSettings } from '@providers/SettingsProvider';
 import { ROUTES } from '@routes';
 
 export const useSidebar = () => {
-  const isAuthenticated = false; // TODO
   const navigate = useNavigate();
+  const { token, onLogout } = useSettings();
+  const isAuthorized = !!token;
 
   const menuItems: MenuProps['items'] = useMemo(() => {
     return [
       {
         key: ROUTES.MOVIES.to,
-        link: ROUTES.MOVIES.to,
         icon: <VideoCameraOutlined />,
         label: 'Фильмы',
       },
       {
         key: ROUTES.CINEMAS.to,
-        link: ROUTES.CINEMAS.to,
         icon: <EnvironmentOutlined />,
         label: 'Кинотеатры',
       },
       {
         key: ROUTES.TICKETS.to,
-        link: ROUTES.TICKETS.to,
         icon: <CarryOutOutlined />,
         label: 'Мои билеты',
       },
       {
         key: ROUTES.LOGIN.to,
-        link: ROUTES.LOGIN.to,
-        icon: isAuthenticated ? <LogoutOutlined /> : <LoginOutlined />,
-        label: isAuthenticated ? 'Выход' : 'Вход',
+        icon: isAuthorized ? <LogoutOutlined /> : <LoginOutlined />,
+        label: isAuthorized ? 'Выход' : 'Вход',
       },
     ];
-  }, [isAuthenticated]);
+  }, [isAuthorized]);
 
   const { pathname } = useLocation();
   const firstPathname = pathname.split('/')[1] || '';
@@ -69,9 +67,19 @@ export const useSidebar = () => {
 
   const onChangeItem = useCallback(
     (path: string) => {
-      navigate(path);
+      // ТЗ: при logout переходить на страницу с фильмами
+      // ТЗ: при попытке перейти в "Мои билеты" без токена переходить на страницу авторизации
+
+      if (isAuthorized && path === ROUTES.LOGIN.to) {
+        onLogout();
+        navigate(ROUTES.MOVIES.to);
+      } else if (!isAuthorized && path === ROUTES.TICKETS.to) {
+        navigate(ROUTES.LOGIN.to);
+      } else {
+        navigate(path);
+      }
     },
-    [navigate]
+    [isAuthorized, navigate, onLogout]
   );
 
   return {
