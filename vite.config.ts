@@ -26,7 +26,31 @@ export default defineConfig({
         target: API_URL,
         changeOrigin: true,
         secure: false,
-        rewrite: (path) => path.replace(/^\/api/, '')
+        rewrite: (path) => path.replace(/^\/api/, ''),
+      },
+    },
+  },
+  optimizeDeps: {
+    include: [
+      'react',
+      'react-dom',
+      'antd',
+      '@ant-design/icons',
+      'axios',
+      'react-router-dom',
+      'dayjs',
+      '@tanstack/react-query',
+    ],
+  },
+  build: {
+    rollupOptions: {
+      output: {
+        manualChunks: {
+          antd: ['antd', '@ant-design/icons'],
+          react: ['react', 'react-dom', 'react-router-dom'],
+          query: ['@tanstack/react-query'],
+          utils: ['axios', 'dayjs'],
+        },
       },
     },
   },

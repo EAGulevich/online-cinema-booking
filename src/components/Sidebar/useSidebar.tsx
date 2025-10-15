@@ -1,12 +1,10 @@
 import { useCallback, useMemo } from 'react';
 import { useLocation, useNavigate } from 'react-router-dom';
-import {
-  CarryOutOutlined,
-  EnvironmentOutlined,
-  LoginOutlined,
-  LogoutOutlined,
-  VideoCameraOutlined,
-} from '@ant-design/icons';
+import CarryOutOutlined from '@ant-design/icons/CarryOutOutlined';
+import EnvironmentOutlined from '@ant-design/icons/EnvironmentOutlined';
+import LoginOutlined from '@ant-design/icons/LoginOutlined';
+import LogoutOutlined from '@ant-design/icons/LogoutOutlined';
+import VideoCameraOutlined from '@ant-design/icons/VideoCameraOutlined';
 import { type MenuProps } from 'antd';
 
 import { ROUTES } from '@routes';

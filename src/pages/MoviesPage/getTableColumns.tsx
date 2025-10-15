@@ -1,4 +1,4 @@
-import { EyeOutlined } from '@ant-design/icons';
+import EyeOutlined from '@ant-design/icons/EyeOutlined';
 import { Button, Image, type TableColumnsType, Tag, Typography } from 'antd';
 
 import { formatMinutesToHHmm } from '@utils/formatMinutesToHHmm.ts';

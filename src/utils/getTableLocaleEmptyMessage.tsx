@@ -1,9 +1,7 @@
 import type { CSSProperties } from 'react';
-import {
-  InboxOutlined,
-  LoadingOutlined,
-  WarningOutlined,
-} from '@ant-design/icons';
+import InboxOutlined from '@ant-design/icons/InboxOutlined';
+import LoadingOutlined from '@ant-design/icons/LoadingOutlined';
+import WarningOutlined from '@ant-design/icons/WarningOutlined';
 import { Flex, Typography } from 'antd';
 
 import type { TableLocale } from 'antd/es/table/interface';
