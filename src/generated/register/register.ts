@@ -16,6 +16,7 @@ import type {
 
 import type {
   ErrorResponse,
+  PostRegister201,
   PostRegisterBody
 } from '.././models';
 
@@ -25,7 +26,7 @@ import postRegisterMutator from '../../api/custom-instance';
 
 
 /**
- * Регистрация нового пользователя в системе.
+ * Регистрация нового пользователя в системе и получение JWT токена.
  * @summary Регистрация нового пользователя
  */
 export const postRegister = (
@@ -34,7 +35,7 @@ export const postRegister = (
 ) => {
       
       
-      return postRegisterMutator<void>(
+      return postRegisterMutator<PostRegister201>(
       {url: `/register`, method: 'POST',
       headers: {'Content-Type': 'application/json', },
       data: postRegisterBody, signal

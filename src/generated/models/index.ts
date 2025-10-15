@@ -24,6 +24,7 @@ export * from './postLogin200';
 export * from './postLoginBody';
 export * from './postMovieSessionsMovieSessionIdBookings200';
 export * from './postMovieSessionsMovieSessionIdBookingsBody';
+export * from './postRegister201';
 export * from './postRegisterBody';
 export * from './seat';
 export * from './settings';
