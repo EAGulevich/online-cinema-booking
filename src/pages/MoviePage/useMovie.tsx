@@ -1,24 +1,29 @@
 import { useGetMoviesMovieIdSessions } from '@generatedApi/movies/movies.ts';
 import { useGetAllCinemas } from '@hooks/useGetAllCinemas.ts';
+import { useGetAllMovies } from '@hooks/useGetAllMovies.ts';
 import { groupSessions } from '@utils/groupSessions.ts';
 
 type UseMovieParams = {
-  id?: string;
+  movieId?: string;
 };
-export const useMovie = ({ id }: UseMovieParams) => {
+export const useMovie = ({ movieId }: UseMovieParams) => {
   const { cinemasMap, cinemasQueryDetails } = useGetAllCinemas();
+  const { moviesMap, moviesQueryDetails } = useGetAllMovies();
 
-  const { data, ...queryDetails } = useGetMoviesMovieIdSessions(+id!, {
+  const { data, ...queryDetails } = useGetMoviesMovieIdSessions(+movieId!, {
     query: {
-      enabled: !!id,
+      enabled: !!movieId,
     },
   });
 
-  const movieInfo = data?.data.movieData;
+  const movieInfo = moviesMap[movieId || ''];
+
   const sessionsInfo =
-    cinemasQueryDetails.isLoading || queryDetails.isLoading
+    moviesQueryDetails.isLoading ||
+    cinemasQueryDetails.isLoading ||
+    queryDetails.isLoading
       ? []
-      : groupSessions(data?.data.sessions || [], cinemasMap, 'cinema');
+      : groupSessions(data?.data || [], cinemasMap, 'cinema');
 
   return {
     queryDetails,

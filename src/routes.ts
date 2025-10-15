@@ -14,10 +14,9 @@ export const ROUTES = {
   LOGIN: { path: '/login', to: '/login' },
   BOOKING: {
     path: '/booking',
-    to: ({ cinemaId, movieId }: { movieId: string; cinemaId: string }) => {
+    to: ({ sessionId }: { sessionId: string }) => {
       const params = new URLSearchParams({
-        movieId,
-        cinemaId,
+        sessionId,
       });
       return `/booking?${params.toString()}` as const;
     },

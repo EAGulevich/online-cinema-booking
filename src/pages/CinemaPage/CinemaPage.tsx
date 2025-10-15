@@ -81,11 +81,10 @@ const CinemaPage: FC = () => {
           </Row>
         )}
         data={sessionsInfo}
-        onSelectSession={({ movieId, cinemaId }) =>
+        onSelectSession={({ sessionId }) =>
           navigate(
             ROUTES.BOOKING.to({
-              movieId: movieId?.toString() || '',
-              cinemaId: cinemaId?.toString() || '',
+              sessionId,
             })
           )
         }

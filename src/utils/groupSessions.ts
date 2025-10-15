@@ -23,6 +23,7 @@ type GroupedMap<RenderDataType> = {
         key: string;
         renderData: RenderDataType;
         sessions: {
+          id: string;
           cinemaId: Cinema['id'];
           movieId: Movie['id'];
           startTime: string;
@@ -86,6 +87,7 @@ export const groupSessions = <
       }
 
       acc[date].rows[dateRowKey].sessions.push({
+        id: session.id?.toString() || '',
         cinemaId: session.cinemaId,
         movieId: session.movieId,
         startTime: time,

@@ -9,6 +9,7 @@ export type ScheduleGroupedSession<T> = {
     key: string;
     renderData: T;
     sessions: {
+      id: string;
       cinemaId: Cinema['id'];
       movieId: Movie['id'];
       startTime: string;
@@ -19,10 +20,7 @@ export type ScheduleGroupedSession<T> = {
 export type ScheduleProps<T> = {
   data: ScheduleGroupedSession<T>[];
   renderRowLabel: (data: T) => ReactNode;
-  onSelectSession: (sessionInfo: {
-    movieId: Movie['id'];
-    cinemaId: Cinema['id'];
-  }) => void;
+  onSelectSession: (sessionInfo: { sessionId: string }) => void;
 };
 
 export const Schedule = <T,>({
@@ -42,15 +40,16 @@ export const Schedule = <T,>({
             </Divider>
             <Flex vertical gap={'large'}>
               {item.rows.map((row) => (
-                <Row key={row.key} justify={'start'} align={'top'} gutter={20} >
-                  <Col span={10} offset={1}>{renderRowLabel(row.renderData)}</Col>
+                <Row key={row.key} justify={'start'} align={'top'} gutter={20}>
+                  <Col span={10} offset={1}>
+                    {renderRowLabel(row.renderData)}
+                  </Col>
                   <Col span={10}>
                     <Flex gap={'large'} wrap>
                       {row.sessions.map((session) => (
                         <Button
                           onClick={onSelectSession.bind(null, {
-                            movieId: session.movieId,
-                            cinemaId: session.cinemaId,
+                            sessionId: session.id,
                           })}
                         >
                           {session.startTime}

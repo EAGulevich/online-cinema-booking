@@ -27,7 +27,7 @@ const { Title } = Typography;
 const MoviePage: FC = () => {
   const { id } = useParams<{ id: string }>();
 
-  const { movieInfo, queryDetails, sessionsInfo } = useMovie({ id });
+  const { movieInfo, queryDetails, sessionsInfo } = useMovie({ movieId: id });
 
   const navigate = useNavigate();
 
@@ -106,11 +106,10 @@ const MoviePage: FC = () => {
           <Typography.Title level={3}>{renderData.cinemaName}</Typography.Title>
         )}
         data={sessionsInfo}
-        onSelectSession={({ movieId, cinemaId }) =>
+        onSelectSession={({ sessionId }) =>
           navigate(
             ROUTES.BOOKING.to({
-              movieId: movieId?.toString() || '',
-              cinemaId: cinemaId?.toString() || '',
+              sessionId,
             })
           )
         }

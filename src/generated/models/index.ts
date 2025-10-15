@@ -9,7 +9,6 @@ export * from './bookedSeat';
 export * from './booking';
 export * from './cinema';
 export * from './errorResponse';
-export * from './getMoviesMovieIdSessions200';
 export * from './movie';
 export * from './movieSession';
 export * from './movieSessionDetails';
