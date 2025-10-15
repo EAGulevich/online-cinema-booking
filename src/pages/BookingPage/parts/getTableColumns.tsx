@@ -5,17 +5,20 @@ import type { SeatsTableDataType, SelectedSeat } from './types.ts';
 type GetTableColumnsParams = {
   seatsPerRow: number;
   onSelect: (selectedSeat: SelectedSeat) => void;
+  bookedSeats: Set<string>;
 };
 
 export const getTableColumns = ({
   seatsPerRow,
   onSelect,
+  bookedSeats,
 }: GetTableColumnsParams): TableColumnsType<SeatsTableDataType> => {
   return [
     {
       key: 'rowLabel',
       dataIndex: 'rowLabel',
       fixed: 'left',
+      align: 'center',
       width: 100,
     },
     ...Array.from(
@@ -25,13 +28,15 @@ export const getTableColumns = ({
         return {
           key: `seat${inxNumber}`,
           title: inxNumber,
-          width: 40,
+          minWidth: 40,
           align: 'center',
           render: (_, record) => {
             const rowNumber = record.rowIndex + 1;
-
+            const isDisabled = bookedSeats.has(`${rowNumber}-${inxNumber}`);
             return (
               <Checkbox
+                disabled={isDisabled}
+                indeterminate={isDisabled}
                 onChange={() =>
                   onSelect({
                     row: rowNumber,

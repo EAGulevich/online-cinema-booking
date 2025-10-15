@@ -12,7 +12,16 @@ const { Title } = Typography;
 const BookingPage: FC = () => {
   const [searchParams] = useSearchParams();
   const sessionId = searchParams.get('sessionId') || '';
-  const { sessionInfo, seats, isSessionLoading } = useBooking({ sessionId });
+  const {
+    sessionInfo,
+    seats,
+    isSessionLoading,
+    onSelectFinish,
+    contextHolder,
+    bookedSeats,
+  } = useBooking({
+    sessionId,
+  });
 
   if (isSessionLoading) {
     return (
@@ -26,14 +35,18 @@ const BookingPage: FC = () => {
   return (
     <>
       <title>Онлайн-бронирование кинотеатра</title>
-
+      {contextHolder}
       <Row justify={'center'}>
         <Col>
           <Title level={2}>Выбрать места</Title>
         </Col>
       </Row>
       <Descriptions bordered layout={'horizontal'} items={sessionInfo} />
-      <SeatGrid {...seats} />
+      <SeatGrid
+        {...seats}
+        onSelectFinish={onSelectFinish}
+        bookedSeats={bookedSeats}
+      />
     </>
   );
 };

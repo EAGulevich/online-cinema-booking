@@ -3,18 +3,30 @@ import { Button, Flex, Table } from 'antd';
 
 import { getTableColumns } from './getTableColumns.tsx';
 
-import type { SeatsTableDataType } from './types.ts';
+import type { SeatsTableDataType, SelectedSeat } from './types.ts';
 
 interface SeatGridProps {
   rows: number;
   seatsPerRow: number;
+  bookedSeats: Set<string>;
+  onSelectFinish: ({
+    selectedSeats,
+  }: {
+    selectedSeats: SelectedSeat[];
+  }) => void;
 }
 
-const SeatGrid: React.FC<SeatGridProps> = ({ rows, seatsPerRow }) => {
+const SeatGrid: React.FC<SeatGridProps> = ({
+  rows,
+  seatsPerRow,
+  onSelectFinish,
+  bookedSeats,
+}) => {
   const selectedSeatsRef = useRef<Set<string>>(new Set());
 
   const columns = getTableColumns({
     seatsPerRow,
+    bookedSeats,
     onSelect: ({ seat, row }) => {
       const seatsSet = selectedSeatsRef.current;
       const seatFullName = `${row}-${seat}`;
@@ -52,8 +64,16 @@ const SeatGrid: React.FC<SeatGridProps> = ({ rows, seatsPerRow }) => {
       <Flex justify={'center'}>
         <Button
           onClick={() => {
-            const selected = Array.from(selectedSeatsRef.current);
-            console.log('selected', selected);
+            const selected = Array.from(selectedSeatsRef.current).map(
+              (item): SelectedSeat => {
+                const [row, seat] = item.split('-');
+                return {
+                  row: +row,
+                  seat: +seat,
+                };
+              }
+            );
+            onSelectFinish({ selectedSeats: selected });
           }}
         >
           Забронировать
