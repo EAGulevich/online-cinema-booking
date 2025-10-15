@@ -52,7 +52,9 @@ export const getTableColumns = ({
       defaultSortOrder: 'descend',
       sorter: (a, b) => (a.rating && b.rating ? a.rating - b.rating : 0),
       render: (item: MoviesTableDataType) => (
-        <Tag color={item.rating > 9 ? 'gold' : undefined}>{item.rating}</Tag>
+        <Tag color={item.rating > 9 ? 'gold' : undefined}>
+          {`${item.rating}.0`.slice(0, 3)}
+        </Tag>
       ),
     },
     {

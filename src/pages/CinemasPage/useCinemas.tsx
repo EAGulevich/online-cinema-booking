@@ -11,11 +11,7 @@ import type { CinemasTableDataType } from './types.ts';
 export const useCinemas = () => {
   const navigation = useNavigate();
 
-  const { data, ...other } = useGetCinemas({
-    query: {
-      queryKey: ['cinemas'],
-    },
-  });
+  const { data, ...queryDetails } = useGetCinemas();
 
   const cinemasData = useMemo(
     () =>
@@ -42,6 +38,6 @@ export const useCinemas = () => {
   return {
     cinemasData,
     cinemasColumns,
-    queryDetails: other,
+    queryDetails,
   };
 };
