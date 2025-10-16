@@ -105,7 +105,11 @@ export const Ticket = ({
                       </Typography.Text>
                     ),
                   });
-                  queryClient.invalidateQueries({ queryKey: ['/me/bookings'] });
+                  setTimeout(() => {
+                    queryClient.invalidateQueries({
+                      queryKey: ['/me/bookings'],
+                    });
+                  }, 1000);
                 }}
               />
             )}
