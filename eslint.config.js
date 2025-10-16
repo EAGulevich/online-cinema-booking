@@ -21,7 +21,10 @@ export default defineConfig([
     },
     languageOptions: {
       ecmaVersion: 2020,
-      globals: globals.browser,
+      globals: {
+        ...globals.browser,
+        ...globals.jest,
+      },
     },
     settings: {
       'import/resolver': {
@@ -115,6 +118,17 @@ export default defineConfig([
           distinctGroup: false,
         },
       ],
+    },
+  },
+  {
+    files: ['**/*.test.ts'],
+    languageOptions: {
+      globals: {
+        ...globals.jest,
+      },
+    },
+    rules: {
+      'import/order': 'off', // Отключаем правило порядка импортов для тестов
     },
   },
 ]);

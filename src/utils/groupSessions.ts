@@ -3,7 +3,7 @@ import dayjs from 'dayjs';
 import type {
   ScheduleGroupedSession,
   ScheduleProps,
-} from '@components/Schedule';
+} from '@components/Schedule/types.ts';
 import type { Cinema, Movie, MovieSession } from '@generatedApi/models';
 
 export type ScheduleCinemaRenderDataType = {
@@ -18,6 +18,7 @@ export type ScheduleMovieRenderDataType = {
 type GroupedMap<RenderDataType> = {
   [date: string]: {
     date: string;
+    fullDate: string;
     rows: {
       [rowKey: string]: {
         key: string;
@@ -55,10 +56,10 @@ export const groupSessions = <
       const date = dayjs(session.startTime).format('DD.MM');
       const time = dayjs(session.startTime).format('HH:mm');
       const dateKey = date;
-      const dateRowKey = +'-' + date + session.cinemaId + '-' + session.movieId;
+      const dateRowKey = date + '-' + session.cinemaId + '-' + session.movieId;
 
       if (!acc[dateKey]) {
-        acc[dateKey] = { date, rows: {} };
+        acc[dateKey] = { date, fullDate: session.startTime || '', rows: {} };
       }
 
       if (!acc[date].rows[dateRowKey]) {
@@ -105,5 +106,5 @@ export const groupSessions = <
         rows: Object.values(val.rows),
       })
     )
-    .sort((a, b) => (dayjs(a.date).isBefore(dayjs(b.date)) ? -1 : 1));
+    .sort((a, b) => (dayjs(a.fullDate).isBefore(dayjs(b.fullDate)) ? -1 : 1));
 };

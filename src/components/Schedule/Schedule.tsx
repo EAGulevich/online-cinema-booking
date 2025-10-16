@@ -1,27 +1,6 @@
-import type { ReactNode } from 'react';
 import { Button, Col, Divider, Flex, Row, Typography } from 'antd';
 
-import type { Cinema, Movie } from '@generatedApi/models';
-
-export type ScheduleGroupedSession<T> = {
-  date: string;
-  rows: {
-    key: string;
-    renderData: T;
-    sessions: {
-      id: string;
-      cinemaId: Cinema['id'];
-      movieId: Movie['id'];
-      startTime: string;
-    }[];
-  }[];
-};
-
-export type ScheduleProps<T> = {
-  data: ScheduleGroupedSession<T>[];
-  renderRowLabel: (data: T) => ReactNode;
-  onSelectSession: (sessionInfo: { sessionId: string }) => void;
-};
+import type { ScheduleProps } from './types.ts';
 
 export const Schedule = <T,>({
   data,
