@@ -7,6 +7,11 @@ export const theme: ThemeConfig = {
     colorBgLayout: '#fff9e6', // Общий фон layout
   },
   components: {
+    // Настройки для Card
+    Card: {
+      colorBgContainer: '#141414e6',
+      colorBorderSecondary: 'transparent',
+    },
     // Настройки для Sider
     Divider: {
       lineWidth: 3,
