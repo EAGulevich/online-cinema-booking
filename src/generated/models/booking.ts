@@ -24,4 +24,12 @@ export interface Booking {
   seats?: Seat[];
   /** Статус оплаты */
   isPaid?: boolean;
+  /** Время начала сеанса */
+  startTime?: string;
+  /** Длительность фильма в минутах */
+  minutesLength?: number;
+  /** Название кинотеатра */
+  cinemaName?: string;
+  /** Название фильма */
+  movieTitle?: string;
 }

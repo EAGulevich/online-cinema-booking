@@ -17,7 +17,7 @@ export interface BookedSeat {
   /** Идентификатор пользователя */
   userId?: number;
   /** Оплачено ли место */
-  isPayed?: boolean;
+  isPaid?: boolean;
   seats?: Seat[];
   /** Время бронирования */
   bookedAt?: string;
