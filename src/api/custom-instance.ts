@@ -26,7 +26,10 @@ export const customInstance = <T>(
     (response) => response,
     (error: AxiosError) => {
       if (error.response?.status === 401) {
-        window.location.href = ROUTES.LOGIN.to;
+        localStorage.removeItem('token');
+        if (!window.location.href.includes(ROUTES.LOGIN.to)) {
+          window.location.href = ROUTES.LOGIN.to;
+        }
       }
       return Promise.reject(error);
     }
