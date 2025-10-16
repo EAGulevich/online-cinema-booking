@@ -124,7 +124,7 @@ export const RegistrationForm = () => {
           <Flex justify={'center'}>
             <Form.Item label={null}>
               <Button size={'large'} type="primary" htmlType="submit">
-                Войти
+                Зарегистрироваться
               </Button>
             </Form.Item>
           </Flex>

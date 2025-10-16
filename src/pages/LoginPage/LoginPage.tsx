@@ -30,7 +30,6 @@ const LoginPage: FC = () => {
 
                 <Button
                   size={'small'}
-                  ghost
                   type={'link'}
                   onClick={() => setIsLoginForm(!isLoginForm)}
                 >
